@@ -1,7 +1,5 @@
 import { useEffect } from 'preact/hooks'
 
-import { PostHogProvider} from 'posthog-js/react'
-
 import { Actions } from '@components/actions/actions'
 import { Colors } from '@components/colors/colors'
 import { Toaster } from '@components/toaster/toaster'
@@ -16,10 +14,6 @@ import { useGenerate } from '@hooks/useGenerate'
 import { NEW_TOKEN_SET } from '@consts/config'
 
 import classes from './app.module.css'
-
-const options = {
-  api_host: import.meta.env.VITE_PUBLIC_POSTHOG_HOST,
-}
 
 export function App() {
   const {
@@ -88,52 +82,48 @@ export function App() {
   const hasError = Object.values(errors).length > 0 || !hasModesSelected || hasTokenTargetError
 
   return (
-    <PostHogProvider
-      apiKey={import.meta.env.VITE_PUBLIC_POSTHOG_KEY}
-      options={options}>
-        <div className={classes.workspace}>
-          <Actions
-            tints={tints}
-            shades={shades}
-            steps={steps}
-            colorType={colorType}
-            setTints={setTints}
-            setShades={setShades}
-            setSteps={setSteps}
-            setColorType={setColorType}
-            onAddPalette={onAddPalette}
-          />
+    <div className={classes.workspace}>
+      <Actions
+        tints={tints}
+        shades={shades}
+        steps={steps}
+        colorType={colorType}
+        setTints={setTints}
+        setShades={setShades}
+        setSteps={setSteps}
+        setColorType={setColorType}
+        onAddPalette={onAddPalette}
+      />
 
-          <Colors
-            palettes={palettes}
-            onSetPalette={onSetPalette}
-            onRemovePalette={onRemovePalette}
-            errors={errors}
-            colorType={colorType}
-          />
+      <Colors
+        palettes={palettes}
+        onSetPalette={onSetPalette}
+        onRemovePalette={onRemovePalette}
+        errors={errors}
+        colorType={colorType}
+      />
 
-          <Toaster toasts={toasts} onRemove={removeToast} />
-          <Footer
-            hasError={hasError}
-            libraryMode={libraryMode}
-            jsonMode={jsonMode}
-            visualPaletteMode={visualPaletteMode}
-            tokensMode={tokensMode}
-            tokensAvailable={tokenSets.available}
-            tokenSets={tokenSets.sets}
-            targetSet={targetSet}
-            newSetName={newSetName}
-            delimiter={delimiter}
-            setLibraryMode={setLibraryMode}
-            setJsonMode={setJsonMode}
-            setVisualPaletteMode={setVisualPaletteMode}
-            setDelimiter={setDelimiter}
-            setTokensMode={setTokensMode}
-            setTargetSet={setTargetSet}
-            setNewSetName={setNewSetName}
-            onSavePalettes={onGeneratePalettes}
-          />
-        </div>
-    </PostHogProvider>
+      <Toaster toasts={toasts} onRemove={removeToast} />
+      <Footer
+        hasError={hasError}
+        libraryMode={libraryMode}
+        jsonMode={jsonMode}
+        visualPaletteMode={visualPaletteMode}
+        tokensMode={tokensMode}
+        tokensAvailable={tokenSets.available}
+        tokenSets={tokenSets.sets}
+        targetSet={targetSet}
+        newSetName={newSetName}
+        delimiter={delimiter}
+        setLibraryMode={setLibraryMode}
+        setJsonMode={setJsonMode}
+        setVisualPaletteMode={setVisualPaletteMode}
+        setDelimiter={setDelimiter}
+        setTokensMode={setTokensMode}
+        setTargetSet={setTargetSet}
+        setNewSetName={setNewSetName}
+        onSavePalettes={onGeneratePalettes}
+      />
+    </div>
   )
 }
