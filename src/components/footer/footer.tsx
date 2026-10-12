@@ -80,22 +80,8 @@ export function Footer({
           <label for="jsonMode" className="code-font">Export as JSON</label>
           <Help description="Save as Tokens (json format)" />
         </div>
-        <div className={clsx(['form-group', 'checkbox-container', classes.fieldset])}>
-          <select
-            className={clsx(['input', classes.delimiterInput])}
-            id="delimiter"
-            value={delimiter}
-            onChange={(e) => setDelimiter(e.currentTarget.value as Delimiter)}>
-            <option value=".">Dot [ . ]</option>
-            <option value="-">Dash [ - ]</option>
-          </select>
-          <label className="code-font" for="delimiter">Delimiter</label>
-          <Help description="The delimiter to use in the color names (red-500 or red.500)" />
-        </div>
-      </div>
 
-      <div className={classes.row}>
-        <div className={classes.options}>
+        <div className={classes.tokens}>
           <div className={clsx(['form-group', 'checkbox-container', classes.fieldset])}>
             <input
               className="checkbox-input"
@@ -139,15 +125,27 @@ export function Footer({
             </div>
           )}
         </div>
-        <button
-          className={classes.generate}
-          data-appearance="primary"
-          disabled={hasError}
-          onClick={onSavePalettes}>
-          Generate
-        </button>
+
+        <div className={clsx(['form-group', 'checkbox-container', classes.fieldset])}>
+          <select
+            className={clsx(['input', classes.delimiterInput])}
+            id="delimiter"
+            value={delimiter}
+            onChange={(e) => setDelimiter(e.currentTarget.value as Delimiter)}>
+            <option value=".">Dot [ . ]</option>
+            <option value="-">Dash [ - ]</option>
+          </select>
+          <label className="code-font" for="delimiter">Delimiter</label>
+          <Help description="The delimiter to use in the color names (red-500 or red.500)" />
+        </div>
       </div>
+      <button
+        className={classes.generate}
+        data-appearance="primary"
+        disabled={hasError}
+        onClick={onSavePalettes}>
+        Generate
+      </button>
     </div>
   )
 }
-
