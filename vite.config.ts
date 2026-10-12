@@ -55,6 +55,8 @@ const pluginConfig = {
 }
 
 const uiConfig = {
+  // Relative asset URLs so the build also works under a sub-path (GitHub Pages project site)
+  base: './',
   build: {
     rollupOptions: {
       input: {
