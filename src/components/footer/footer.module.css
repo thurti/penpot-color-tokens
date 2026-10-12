@@ -2,19 +2,21 @@
   background: var(--background-secondary);
   border-radius: var(--spacing-12);
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
-  gap: var(--spacing-12);
-  padding: var(--spacing-4);
+  gap: var(--spacing-8) var(--spacing-12);
+  /* Right padding matches the left inset of the options (4px + 12px) */
+  padding: var(--spacing-4) var(--spacing-16) var(--spacing-4) var(--spacing-4);
 }
 
 /* All options flow and wrap among themselves; the button never moves */
 .options {
   display: flex;
   flex-flow: row wrap;
-  flex: 1 1 auto;
-  min-width: 0;
+  /* Zero basis: the button only wraps below once the options reach min-width */
+  flex: 1 1 0;
+  min-width: calc(var(--spacing-40) * 7);
   align-items: center;
   gap: var(--spacing-8) var(--spacing-12);
   padding: var(--spacing-4) var(--spacing-12);
@@ -24,13 +26,19 @@
   width: calc(var(--spacing-40) * 3);
 }
 
+/* Label text never breaks; the groups themselves may shrink and wrap
+   so that nothing can push the button out of view */
 .fieldset {
   display: flex;
-  flex-flow: row nowrap;
-  flex: 0 0 auto;
+  flex-flow: row wrap;
+  flex: 0 1 auto;
+  max-width: 100%;
   align-items: center;
   gap: var(--spacing-4);
   margin-right: var(--spacing-8);
+}
+
+.fieldset label {
   white-space: nowrap;
 }
 
@@ -38,6 +46,8 @@
 .tokens {
   display: flex;
   flex-flow: row wrap;
+  flex: 0 1 auto;
+  max-width: 100%;
   align-items: center;
   gap: var(--spacing-8) var(--spacing-12);
 }
@@ -48,4 +58,5 @@
 
 .generate {
   flex: 0 0 auto;
+  margin-left: auto;
 }
