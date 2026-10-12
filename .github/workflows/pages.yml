@@ -18,7 +18,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Penpot resolves manifest `code`/`icon` against the origin only, so they must be absolute
+      # Absolute URL of the deployed plugin, used for ui.open() so the UI also loads from the
+      # /<repo>/ sub-path of a GitHub Pages project site (Penpot's UI URL resolution is undocumented)
       PLUGIN_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
     steps:
       - uses: actions/checkout@v4
@@ -34,12 +35,6 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - run: pnpm build
-
-      - name: Make manifest URLs absolute
-        run: |
-          jq --arg base "$PLUGIN_BASE_URL" '.code = $base + "plugin.js" | .icon = $base + "icon.png"' dist/manifest.json > dist/manifest.tmp
-          mv dist/manifest.tmp dist/manifest.json
-          cat dist/manifest.json
 
       - uses: actions/upload-pages-artifact@v5
         with:

@@ -9,8 +9,8 @@ import {
   handleGetTokenSetsMessage,
 } from '@plugin/messages'
 
-// Penpot resolves relative URLs against the host origin only, so a build hosted
-// under a sub-path (GitHub Pages project site) needs an absolute URL
+// Absolute URL when hosted under a sub-path (GitHub Pages project site), where
+// relative UI URLs were not resolved against the manifest location
 const UI_URL = `${__PLUGIN_BASE_URL__ || './'}index.html?theme=${penpot.theme}`
 
 penpot.ui.open(LIBRARY_NAME, UI_URL, {
