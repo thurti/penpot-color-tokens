@@ -9,7 +9,11 @@ import {
   handleGetTokenSetsMessage,
 } from '@plugin/messages'
 
-penpot.ui.open(LIBRARY_NAME, `./index.html?theme=${penpot.theme}`, {
+// Penpot resolves relative URLs against the host origin only, so a build hosted
+// under a sub-path (GitHub Pages project site) needs an absolute URL
+const UI_URL = `${__PLUGIN_BASE_URL__ || './'}index.html?theme=${penpot.theme}`
+
+penpot.ui.open(LIBRARY_NAME, UI_URL, {
   width: 990,
   height: 600,
 })

@@ -42,6 +42,10 @@ const baseConfig = {
 }
 
 const pluginConfig = {
+  define: {
+    // Absolute public URL of the deployed plugin incl. trailing slash; empty = relative
+    __PLUGIN_BASE_URL__: JSON.stringify(process.env.PLUGIN_BASE_URL ?? ''),
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/plugin.ts'),
