@@ -6,9 +6,10 @@ describe('useGenerateOptions', () => {
   it('should initialize with default values', () => {
     const { result } = renderHook(() => useGenerateOptions())
 
-    expect(result.current.libraryMode).toBe(true)
-    expect(result.current.jsonMode).toBe(true)
-    expect(result.current.visualPaletteMode).toBe(true)
+    expect(result.current.libraryMode).toBe(false)
+    expect(result.current.jsonMode).toBe(false)
+    expect(result.current.visualPaletteMode).toBe(false)
+    expect(result.current.tokensMode).toBe(false)
   })
 
   it('should toggle libraryMode', () => {
