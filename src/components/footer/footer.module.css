@@ -2,19 +2,14 @@
   background: var(--background-secondary);
   border-radius: var(--spacing-12);
   display: flex;
-  flex-flow: column nowrap;
-  gap: var(--spacing-8);
-  padding: var(--spacing-8) var(--spacing-4);
-}
-
-.row {
-  display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-12);
+  padding: var(--spacing-4);
 }
 
+/* All options flow and wrap among themselves; the button never moves */
 .options {
   display: flex;
   flex-flow: row wrap;
@@ -22,7 +17,7 @@
   min-width: 0;
   align-items: center;
   gap: var(--spacing-8) var(--spacing-12);
-  padding: 0 var(--spacing-12);
+  padding: var(--spacing-4) var(--spacing-12);
 }
 
 .delimiterInput {
@@ -39,11 +34,18 @@
   white-space: nowrap;
 }
 
+/* "Add to tokens" and its set selector wrap as one unit */
+.tokens {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  gap: var(--spacing-8) var(--spacing-12);
+}
+
 .setInput {
   width: calc(var(--spacing-40) * 4);
 }
 
 .generate {
   flex: 0 0 auto;
-  margin-left: auto;
 }
