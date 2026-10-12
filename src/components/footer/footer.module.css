@@ -2,32 +2,29 @@
   background: var(--background-secondary);
   border-radius: var(--spacing-12);
   display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-8) var(--spacing-12);
-  /* Right padding matches the left inset of the options (4px + 12px) */
+  flex-flow: column nowrap;
+  gap: var(--spacing-4);
+  /* Right padding matches the left inset of the rows (4px + 12px) */
   padding: var(--spacing-4) var(--spacing-16) var(--spacing-4) var(--spacing-4);
 }
 
-/* All options flow and wrap among themselves; the button never moves */
-.options {
+/* Fixed rows: what is shown in one row never moves the others.
+   min-height keeps the footer from changing height when the set selector appears. */
+.row {
   display: flex;
   flex-flow: row wrap;
-  /* Zero basis: the button only wraps below once the options reach min-width */
-  flex: 1 1 0;
-  min-width: calc(var(--spacing-40) * 7);
   align-items: center;
-  gap: var(--spacing-8) var(--spacing-12);
-  padding: var(--spacing-4) var(--spacing-12);
+  justify-content: space-between;
+  gap: var(--spacing-4) var(--spacing-12);
+  min-height: var(--spacing-40);
+  padding: 0 var(--spacing-12);
 }
 
 .delimiterInput {
   width: calc(var(--spacing-40) * 3);
 }
 
-/* Label text never breaks; the groups themselves may shrink and wrap
-   so that nothing can push the button out of view */
+/* Label text never breaks; groups may shrink and wrap so nothing is pushed out of view */
 .fieldset {
   display: flex;
   flex-flow: row wrap;
@@ -40,16 +37,6 @@
 
 .fieldset label {
   white-space: nowrap;
-}
-
-/* "Add to tokens" and its set selector wrap as one unit */
-.tokens {
-  display: flex;
-  flex-flow: row wrap;
-  flex: 0 1 auto;
-  max-width: 100%;
-  align-items: center;
-  gap: var(--spacing-8) var(--spacing-12);
 }
 
 .setInput {
