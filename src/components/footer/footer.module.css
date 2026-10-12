@@ -2,18 +2,26 @@
   background: var(--background-secondary);
   border-radius: var(--spacing-12);
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column nowrap;
+  gap: var(--spacing-8);
+  padding: var(--spacing-8) var(--spacing-4);
+}
+
+.row {
+  display: flex;
+  flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-12);
-  padding: var(--spacing-4);
 }
 
 .options {
   display: flex;
-  flex-flow: row nowrap;
-  gap: var(--spacing-12);
+  flex-flow: row wrap;
+  flex: 1 1 auto;
+  min-width: 0;
   align-items: center;
+  gap: var(--spacing-8) var(--spacing-12);
   padding: 0 var(--spacing-12);
 }
 
@@ -24,14 +32,18 @@
 .fieldset {
   display: flex;
   flex-flow: row nowrap;
+  flex: 0 0 auto;
+  align-items: center;
   gap: var(--spacing-4);
   margin-right: var(--spacing-8);
+  white-space: nowrap;
 }
 
 .setInput {
   width: calc(var(--spacing-40) * 4);
 }
 
-.hint {
-  color: var(--foreground-secondary);
+.generate {
+  flex: 0 0 auto;
+  margin-left: auto;
 }
